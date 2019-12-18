@@ -32,7 +32,6 @@ public class Game implements Runnable, Renderable, Updateble {
 	public static final int MAP = 0;
 	public static int CUR_MAP = MAP;
 	
-	public static int stateIntro = 0;
 	public static boolean enter;
 	
 	private boolean isRunning;
