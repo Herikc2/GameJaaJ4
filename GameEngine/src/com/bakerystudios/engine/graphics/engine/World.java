@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 import com.bakerystudios.engine.camera.Camera;
 import com.bakerystudios.engine.graphics.tiles.FloorTile;
 import com.bakerystudios.engine.graphics.tiles.WallTile;
-import com.bakerystudios.game.Game;
+import com.bakerystudios.entities.Player;
 
 public class World {
 
@@ -21,7 +21,7 @@ public class World {
 	public Tile[] tiles;
 	public int WIDTH, HEIGHT;
 
-	public World(String map_path, String colmap_path) {
+	public World(String map_path, String colmap_path, Player player) {
 		try {
 			BufferedImage col_map = ImageIO.read(getClass().getResource(colmap_path));
 			map = ImageIO.read(getClass().getResource(map_path));
@@ -42,8 +42,8 @@ public class World {
 						tiles[xx + (yy * WIDTH)] = new WallTile(xx * Tile.SIZE, yy * Tile.SIZE, Tile.TILE_WALL);
 					}
 					if (pixelAtual == PLAYER) {
-						Game.player.setX(xx * Tile.SIZE);
-						Game.player.setY(yy * Tile.SIZE);
+						player.setX(xx * Tile.SIZE);
+						player.setY(yy * Tile.SIZE);
 					}
 				}
 			}
@@ -70,7 +70,7 @@ public class World {
 				|| (tiles[x3 + (y3 * WIDTH)] instanceof WallTile) || (tiles[x4 + (y4 * WIDTH)] instanceof WallTile));
 	}
 
-	public void render(Graphics g) {
+	public void render(Graphics g, Camera camera) {
 //		int xstart = Camera.x >> 4;
 //		int ystart = Camera.y >> 4;
 //
@@ -88,7 +88,7 @@ public class World {
 //			}
 //		}
 		Tile tile = tiles[0];
-		g.drawImage(map, tile.getX() - Camera.x, tile.getY() - Camera.y, null);
+		g.drawImage(map, tile.getX() - camera.getX(), tile.getY() - camera.getY(), null);
 	}
 
 }

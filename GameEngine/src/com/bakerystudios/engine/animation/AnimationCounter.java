@@ -3,7 +3,7 @@ package com.bakerystudios.engine.animation;
 public class AnimationCounter {
 	
 	private int frames, index;
-	public final int MAX_FRAMES, MAX_INDEX;
+	private final int MAX_FRAMES, MAX_INDEX;
 	private boolean moved, movement;
 	
 	public AnimationCounter(int MAX_FRAMES, int MAX_INDEX, boolean movement) {
