@@ -22,8 +22,8 @@ public class Tile {
 		this.sprite = sprite;
 	}
 	
-	public void render(Graphics g){
-		g.drawImage(sprite, x - Camera.x, y - Camera.y, null);
+	public void render(Graphics g, Camera camera){
+		g.drawImage(sprite, x - camera.getX(), y - camera.getY(), null);
 	}
 
 	public int getX() {

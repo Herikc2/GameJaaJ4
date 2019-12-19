@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import com.bakerystudios.engine.Renderable;
 import com.bakerystudios.engine.Updateble;
 import com.bakerystudios.engine.camera.Camera;
+import com.bakerystudios.game.screen.Screen;
 
 public class Entity implements Renderable, Updateble {
 	
@@ -55,8 +56,12 @@ public class Entity implements Renderable, Updateble {
 	}
 
 	@Override
-	public void render(Graphics g) {
-		g.drawImage(sprite,this.getX() - Camera.x,this.getY() - Camera.y,null);
+	public void render(Graphics g) {		
+	}
+	
+	@Override
+	public void render(Graphics g, Camera camera) {
+		g.drawImage(sprite,this.getX() - camera.getX(),this.getY() - camera.getY(),null);
 		//g.setColor(Color.red);
 		//g.fillRect(this.getX() + maskx - Camera.x,this.getY() + masky - Camera.y,mwidth,mheight);
 	}
@@ -83,6 +88,10 @@ public class Entity implements Renderable, Updateble {
 	
 	public int getHeight() {
 		return this.height;
+	}
+
+	@Override
+	public void render(Graphics g, Screen screen) {
 	}
 	
 }

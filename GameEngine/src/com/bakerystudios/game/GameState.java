@@ -4,6 +4,6 @@ public enum GameState {
 
 	MENU, PLAYING, OVER, INTRO;
 
-	public static GameState state = MENU;
+	public static GameState state = MENU; // Não sei como tirar o static
 
 }
