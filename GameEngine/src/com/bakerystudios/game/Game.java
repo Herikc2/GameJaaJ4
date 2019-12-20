@@ -173,7 +173,7 @@ public class Game implements Runnable, Renderable, Updateble {
 
 		g.dispose();
 		g = bs.getDrawGraphics();
-		g.drawImage(frame, 0, 0, screen.getSCALE_WIDTH(), screen.getSCALE_HEIGHT(), null);
+		g.drawImage(frame, 0, 0, Screen.SCALE_WIDTH, Screen.SCALE_HEIGHT, null);
 
 		nonPixelatedRender(g);
 

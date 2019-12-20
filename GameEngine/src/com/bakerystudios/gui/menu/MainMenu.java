@@ -33,11 +33,11 @@ public class MainMenu implements Updateble, Renderable {
 	}
 
 	protected void drawCentralizedString(Graphics g, String str, int y, Screen screen) {
-		g.drawString(str, screen.getSCALE_WIDTH() / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
+		g.drawString(str, Screen.SCALE_WIDTH / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
 	}
-
+	
 	protected void fillCentralizedRect(Graphics g, int y, int width, int height, Screen screen) {
-		g.fillRect(screen.getSCALE_WIDTH() / 2 - width / 2, y, width, height);
+		g.fillRect(Screen.SCALE_WIDTH / 2 - width / 2, y, width, height);
 	}
 
 	@SuppressWarnings("unused")

@@ -51,8 +51,8 @@ public class UserInterface implements Renderable, Updateble {
 		}
 	}
 
-	protected void drawCentralizedString(Graphics g, String str, int y, Screen screen) {
-		g.drawString(str, screen.getSCALE_WIDTH() / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
+	protected void drawCentralizedString(Graphics g, String str, int y) {
+		g.drawString(str, Screen.SCALE_WIDTH / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
 	}
 
 	@Override

@@ -9,11 +9,11 @@ import com.bakerystudios.game.screen.Screen;
 public class TextBox {
 
 	protected static void drawCentralizedString(Graphics g, String str, int y, Screen screen) {
-		g.drawString(str, screen.getSCALE_WIDTH() / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
+		g.drawString(str, Screen.SCALE_WIDTH / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
 	}
-
+	
 	protected static void fillCentralizedRect(Graphics g, int y, int width, int height, Screen screen) {
-		g.fillRect(screen.getSCALE_WIDTH() / 2 - width / 2, y, width, height);
+		g.fillRect(Screen.SCALE_WIDTH / 2 - width / 2, y, width, height);
 	}
 
 	public static void showPopUp(Graphics g, Font font, int y, String t1, String t2, Screen screen) {

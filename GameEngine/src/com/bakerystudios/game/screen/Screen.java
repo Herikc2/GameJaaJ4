@@ -16,13 +16,13 @@ public class Screen extends Canvas {
 	 */
 	private static final long serialVersionUID = -8027725672170867390L;
 	
-	private int SCALE = 5;
-	private int WIDTH = 1280 / SCALE;
-	private int HEIGHT = (WIDTH / 16) * 9;
-	private int SCALE_WIDTH = WIDTH * SCALE;
-	private int SCALE_HEIGHT = HEIGHT * SCALE;
+	public static int SCALE = 5;
+	public static int WIDTH = 1280 / SCALE;
+	public static int HEIGHT = (WIDTH / 16) * 9;
+	public static int SCALE_WIDTH = WIDTH * SCALE;
+	public static int SCALE_HEIGHT = HEIGHT * SCALE;
 
-	private JFrame frame;
+	public static JFrame frame;
 	
 	public Screen(List<Input> inputs) {
 		for(Input input : inputs) {
@@ -55,7 +55,7 @@ public class Screen extends Canvas {
 		SCALE_HEIGHT = HEIGHT * SCALE;
 	}
 	
-	@Override
+	/*@Override
 	public int getWidth() {
 		return super.getWidth();
 	}
@@ -71,6 +71,6 @@ public class Screen extends Canvas {
 	
 	public int getSCALE_HEIGHT() {
 		return SCALE_HEIGHT;
-	}
+	}*/
 	
 }
