@@ -10,11 +10,11 @@ import com.bakerystudios.game.screen.Screen;
 public class PauseMenu implements Updateble, Renderable {
 
 	protected static void drawCentralizedString(Graphics g, String str, int y, Screen screen) {
-		g.drawString(str, screen.SCALE_WIDTH / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
+		g.drawString(str, screen.getSCALE_WIDTH() / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
 	}
 	
 	protected static void fillCentralizedRect(Graphics g, int width, int height, Screen screen) {
-		g.fillRect(screen.SCALE_WIDTH / 2 - width / 2, screen.SCALE_HEIGHT / 2 - height / 2, width, height);
+		g.fillRect(screen.getSCALE_WIDTH() / 2 - width / 2, screen.getSCALE_HEIGHT() / 2 - height / 2, width, height);
 	}
 	
 	@Override

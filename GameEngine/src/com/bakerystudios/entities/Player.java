@@ -132,10 +132,10 @@ public class Player extends Entity implements Renderable, Updateble {
 	}
 
 	public void updateCamera(List<World> world, int CUR_MAP, Screen screen) {
-		camera.setX(camera.clamp(this.getX() - (screen.WIDTH / 2), 0,
-				world.get(CUR_MAP).getWIDTH() * Tile.SIZE - screen.WIDTH));
-		camera.setY(camera.clamp(this.getY() - (screen.HEIGHT / 2), 0,
-				world.get(CUR_MAP).getHEIGHT() * Tile.SIZE - screen.HEIGHT));
+		camera.setX(camera.clamp(this.getX() - (screen.getWIDTH() / 2), 0,
+				world.get(CUR_MAP).getWIDTH() * Tile.SIZE - screen.getWIDTH()));
+		camera.setY(camera.clamp(this.getY() - (screen.getHEIGHT() / 2), 0,
+				world.get(CUR_MAP).getHEIGHT() * Tile.SIZE - screen.getHEIGHT()));
 	}
 
 	public boolean isRight() {

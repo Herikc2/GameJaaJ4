@@ -80,7 +80,7 @@ public class Game implements Runnable, Renderable, Updateble {
 		
 		// outros carregamentos
 		setRand(new Random());
-		frame = new BufferedImage(screen.WIDTH, screen.HEIGHT, BufferedImage.TYPE_INT_RGB);
+		frame = new BufferedImage(screen.getWIDTH(), screen.getHEIGHT(), BufferedImage.TYPE_INT_RGB);
 		
 		gui = new GraphicUserInterface();
 		audio = new AudioManager();
@@ -167,13 +167,13 @@ public class Game implements Runnable, Renderable, Updateble {
 		g = frame.getGraphics();
 
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, screen.WIDTH, screen.HEIGHT);
+		g.fillRect(0, 0, screen.getWidth(), screen.getHEIGHT());
 
 		pixelatedRender(g);
 
 		g.dispose();
 		g = bs.getDrawGraphics();
-		g.drawImage(frame, 0, 0, screen.SCALE_WIDTH, screen.SCALE_HEIGHT, null);
+		g.drawImage(frame, 0, 0, screen.getSCALE_WIDTH(), screen.getSCALE_HEIGHT(), null);
 		
 		nonPixelatedRender(g);
 		
