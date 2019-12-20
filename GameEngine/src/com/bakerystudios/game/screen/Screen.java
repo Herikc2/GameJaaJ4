@@ -43,8 +43,8 @@ public class Screen extends Canvas {
 		//frame.setResizable(false);
 	}
 
-	// pega a resolução do monitor para inicializar
-	// a resolução do jogo
+	// pega a resoluÃ§Ã£o do monitor para inicializar
+	// a resoluÃ§Ã£o do jogo
 	@SuppressWarnings("unused")
 	private void initScreenSize() {
 		Toolkit tk = Toolkit.getDefaultToolkit();

@@ -14,7 +14,7 @@ import com.bakerystudios.game.screen.Screen;
 
 public class MainMenu implements Updateble, Renderable {
 	
-	public static boolean enter; // Não sei como retirar o static
+	public static boolean enter; // NÃ£o sei como retirar o static
 	private BufferedImage[] background;
 	private int frames = 0, maxFrames = 55, index = 0, maxIndex = 1;
 	

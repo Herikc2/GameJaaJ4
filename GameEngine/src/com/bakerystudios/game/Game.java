@@ -55,13 +55,13 @@ public class Game implements Runnable, Renderable, Updateble {
 
 	private Player player;
 
-	public static Spritesheet spritesheet; // Não sei como retirar o static
+	public static Spritesheet spritesheet; // NÃ£o sei como retirar o static
 	private Spritesheet characters;
 	private List<World> world;
 	private List<Entity> entities;
 
-	public static boolean enter; // Não sei retirar o static
-	public static boolean gameEvent = false; // Não sei retirar o static
+	public static boolean enter; // NÃ£o sei retirar o static
+	public static boolean gameEvent = false; // NÃ£o sei retirar o static
 	
 	private boolean EXIT = false;
 
