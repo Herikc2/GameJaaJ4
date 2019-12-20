@@ -17,29 +17,29 @@ public class World {
 	private final int WALL = 0xFFFFFFFF;
 	private final int PLAYER = 0xFF5BABE1;
 
-	public BufferedImage map;
-	public Tile[] tiles;
-	public int WIDTH, HEIGHT;
+	private BufferedImage map;
+	private Tile[] tiles;
+	private int WIDTH, HEIGHT;
 
 	public World(String map_path, String colmap_path, Player player) {
 		try {
 			BufferedImage col_map = ImageIO.read(getClass().getResource(colmap_path));
 			map = ImageIO.read(getClass().getResource(map_path));
 			int[] pixels = new int[col_map.getWidth() * col_map.getHeight()];
-			WIDTH = col_map.getWidth();
-			HEIGHT = col_map.getHeight();
+			setWIDTH(col_map.getWidth());
+			setHEIGHT(col_map.getHeight());
 			tiles = new Tile[col_map.getWidth() * col_map.getHeight()];
 			col_map.getRGB(0, 0, col_map.getWidth(), col_map.getHeight(), pixels, 0, col_map.getWidth());
 			for (int xx = 0; xx < col_map.getWidth(); xx++) {
 				for (int yy = 0; yy < col_map.getHeight(); yy++) {
 					int pixelAtual = pixels[xx + (yy * col_map.getWidth())];
-					tiles[xx + (yy * WIDTH)] = new FloorTile(xx * Tile.SIZE, yy * Tile.SIZE, Tile.TILE_FLOOR);
+					tiles[xx + (yy * getWIDTH())] = new FloorTile(xx * Tile.SIZE, yy * Tile.SIZE, Tile.TILE_FLOOR);
 
 					if (pixelAtual == FLOOR) {
-						tiles[xx + (yy * WIDTH)] = new FloorTile(xx * Tile.SIZE, yy * Tile.SIZE, Tile.TILE_FLOOR);
+						tiles[xx + (yy * getWIDTH())] = new FloorTile(xx * Tile.SIZE, yy * Tile.SIZE, Tile.TILE_FLOOR);
 					}
 					if (pixelAtual == WALL) {
-						tiles[xx + (yy * WIDTH)] = new WallTile(xx * Tile.SIZE, yy * Tile.SIZE, Tile.TILE_WALL);
+						tiles[xx + (yy * getWIDTH())] = new WallTile(xx * Tile.SIZE, yy * Tile.SIZE, Tile.TILE_WALL);
 					}
 					if (pixelAtual == PLAYER) {
 						player.setX(xx * Tile.SIZE);
@@ -66,8 +66,8 @@ public class World {
 		int x4 = (xnext + Tile.SIZE - 1) / Tile.SIZE;
 		int y4 = (ynext + Tile.SIZE - 1) / Tile.SIZE;
 
-		return !((tiles[x1 + (y1 * WIDTH)] instanceof WallTile) || (tiles[x2 + (y2 * WIDTH)] instanceof WallTile)
-				|| (tiles[x3 + (y3 * WIDTH)] instanceof WallTile) || (tiles[x4 + (y4 * WIDTH)] instanceof WallTile));
+		return !((tiles[x1 + (y1 * getWIDTH())] instanceof WallTile) || (tiles[x2 + (y2 * getWIDTH())] instanceof WallTile)
+				|| (tiles[x3 + (y3 * getWIDTH())] instanceof WallTile) || (tiles[x4 + (y4 * getWIDTH())] instanceof WallTile));
 	}
 
 	public void render(Graphics g, Camera camera) {
@@ -89,6 +89,22 @@ public class World {
 //		}
 		Tile tile = tiles[0];
 		g.drawImage(map, tile.getX() - camera.getX(), tile.getY() - camera.getY(), null);
+	}
+
+	public int getHEIGHT() {
+		return HEIGHT;
+	}
+
+	public void setHEIGHT(int hEIGHT) {
+		HEIGHT = hEIGHT;
+	}
+
+	public int getWIDTH() {
+		return WIDTH;
+	}
+
+	public void setWIDTH(int wIDTH) {
+		WIDTH = wIDTH;
 	}
 
 }

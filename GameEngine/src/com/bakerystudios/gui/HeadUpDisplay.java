@@ -23,10 +23,14 @@ public class HeadUpDisplay implements Renderable, Updateble {
 
 	@Override
 	public void render(Graphics g, Camera camera) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void render(Graphics g, Screen screen) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

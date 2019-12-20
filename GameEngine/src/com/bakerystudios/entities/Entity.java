@@ -16,11 +16,11 @@ public class Entity implements Renderable, Updateble {
 	protected int width;
 	protected int height;
 	
-	public boolean debug = false;
+	private boolean debug = false;
 	
 	protected BufferedImage sprite;
 	
-	public int maskx,masky,mwidth,mheight;
+	private int maskx,masky,mwidth,mheight;
 	
 	public Entity(int x,int y,int width,int height,BufferedImage sprite){
 		this.x = x;
@@ -56,10 +56,6 @@ public class Entity implements Renderable, Updateble {
 	}
 
 	@Override
-	public void render(Graphics g) {		
-	}
-	
-	@Override
 	public void render(Graphics g, Camera camera) {
 		g.drawImage(sprite,this.getX() - camera.getX(),this.getY() - camera.getY(),null);
 		//g.setColor(Color.red);
@@ -91,7 +87,23 @@ public class Entity implements Renderable, Updateble {
 	}
 
 	@Override
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean isDebug() {
+		return debug;
+	}
+
+	public void setDebug(boolean debug) {
+		this.debug = debug;
+	}
+
+	@Override
 	public void render(Graphics g, Screen screen) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -8,7 +8,7 @@ import com.bakerystudios.game.Game;
 
 public class Tile {
 	
-	public static final int SIZE = 16;
+	public static final int SIZE = 16; 
 	
 	public static BufferedImage TILE_FLOOR = Game.spritesheet.getSprite(0,0,SIZE,SIZE);
 	public static BufferedImage TILE_WALL = Game.spritesheet.getSprite(16,0,SIZE,SIZE);
