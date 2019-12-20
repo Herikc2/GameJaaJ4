@@ -4,6 +4,6 @@ public enum MenuState {
 
 	MAIN, PAUSE;
 	
-	public static MenuState state = MAIN;
+	public static MenuState state = MAIN; // Não sei como retirar o static
 		
 }

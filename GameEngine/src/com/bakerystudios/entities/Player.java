@@ -2,12 +2,14 @@ package com.bakerystudios.entities;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import com.bakerystudios.engine.Renderable;
 import com.bakerystudios.engine.Updateble;
 import com.bakerystudios.engine.camera.Camera;
+import com.bakerystudios.engine.graphics.engine.Spritesheet;
 import com.bakerystudios.engine.graphics.engine.Tile;
-import com.bakerystudios.game.Game;
+import com.bakerystudios.engine.graphics.engine.World;
 import com.bakerystudios.game.screen.Screen;
 
 public class Player extends Entity implements Renderable, Updateble {
@@ -20,12 +22,9 @@ public class Player extends Entity implements Renderable, Updateble {
 
 	private int frames = 0, maxFrames = 5, index = 0, maxIndex = 2;
 	private boolean moved = false;
-	public static final int RIGHT_DIR = 0, LEFT_DIR = 1, UP_DIR = 2, DOWN_DIR = 3;
+	private final int RIGHT_DIR = 0, LEFT_DIR = 1, UP_DIR = 2, DOWN_DIR = 3;
 	private int dir = LEFT_DIR;
 	protected static boolean right, left, up, down;
-
-	public static boolean usedAlavanca = false;
-	public boolean florestEvent;
 
 	private double speed = 1.0;
 
@@ -33,22 +32,24 @@ public class Player extends Entity implements Renderable, Updateble {
 	private BufferedImage[] leftSprite;
 	private BufferedImage[] downSprite;
 	private BufferedImage[] upSprite;
+	
+	private Camera camera;
 
-	public static int controllerInventory = 1; // 1 para Inventario - 2 para Bau
-
-	public Player(int x, int y, int width, int height, BufferedImage sprite) {
+	public Player(int x, int y, int width, int height, BufferedImage sprite, Spritesheet characters) {
 		super(x, y, width, height, sprite);
 
+		camera = new Camera(0, 0);
+		
 		rightSprite = new BufferedImage[3];
 		leftSprite = new BufferedImage[3];
 		downSprite = new BufferedImage[3];
 		upSprite = new BufferedImage[3];
 
 		for (int i = 0; i < 3; i++) {
-			downSprite[i] = Game.characters.getSprite(48 + (i * 16), 0, 16, 16);
-			leftSprite[i] = Game.characters.getSprite(48 + (i * 16), 16, 16, 16);
-			rightSprite[i] = Game.characters.getSprite(48 + (i * 16), 32, 16, 16);
-			upSprite[i] = Game.characters.getSprite(48 + (i * 16), 48, 16, 16);
+			downSprite[i] = characters.getSprite(48 + (i * 16), 0, 16, 16);
+			leftSprite[i] = characters.getSprite(48 + (i * 16), 16, 16, 16);
+			rightSprite[i] = characters.getSprite(48 + (i * 16), 32, 16, 16);
+			upSprite[i] = characters.getSprite(48 + (i * 16), 48, 16, 16);
 		}
 	}
 	
@@ -105,18 +106,10 @@ public class Player extends Entity implements Renderable, Updateble {
 		}
 	}
 
-	public void update() {
+	public void update(List<World> world, Screen screen, int CUR_MAP) {
 		moving();
 		animation();
-		updateCamera();
-
-		if (x == 896 && y == 624) {
-			florestEvent = true;
-			movingLeft = true;
-			moved = true;
-			dir = LEFT_DIR;
-			Game.gameEvent = true;
-		}
+		updateCamera(world, CUR_MAP, screen);
 	}
 
 	public void render(Graphics g) {
@@ -124,25 +117,25 @@ public class Player extends Entity implements Renderable, Updateble {
 //		g.fillRect((int) x - Camera.x, (int) y - Camera.y, 16, 16);
 
 		if (dir == RIGHT_DIR) {
-			g.drawImage(rightSprite[index], this.getX() - Camera.x, this.getY() - Camera.y, null);
+			g.drawImage(rightSprite[index], this.getX() - camera.getX(), this.getY() - camera.getY(), null);
 
 		} else if (dir == LEFT_DIR) {
-			g.drawImage(leftSprite[index], this.getX() - Camera.x, this.getY() - Camera.y, null);
+			g.drawImage(leftSprite[index], this.getX() - camera.getX(), this.getY() - camera.getY(), null);
 
 		} else if (dir == UP_DIR) {
-			g.drawImage(upSprite[index], this.getX() - Camera.x, this.getY() - Camera.y, null);
+			g.drawImage(upSprite[index], this.getX() - camera.getX(), this.getY() - camera.getY(), null);
 
 		} else if (dir == DOWN_DIR) {
-			g.drawImage(downSprite[index], this.getX() - Camera.x, this.getY() - Camera.y, null);
+			g.drawImage(downSprite[index], this.getX() - camera.getX(), this.getY() - camera.getY(), null);
 
 		}
 	}
 
-	public void updateCamera() {
-		Camera.x = Camera.clamp(this.getX() - (Screen.WIDTH / 2), 0,
-				Game.world.get(Game.CUR_MAP).WIDTH * Tile.SIZE - Screen.WIDTH);
-		Camera.y = Camera.clamp(this.getY() - (Screen.HEIGHT / 2), 0,
-				Game.world.get(Game.CUR_MAP).HEIGHT * Tile.SIZE - Screen.HEIGHT);
+	public void updateCamera(List<World> world, int CUR_MAP, Screen screen) {
+		camera.setX(camera.clamp(this.getX() - (screen.WIDTH / 2), 0,
+				world.get(CUR_MAP).getWIDTH() * Tile.SIZE - screen.WIDTH));
+		camera.setY(camera.clamp(this.getY() - (screen.HEIGHT / 2), 0,
+				world.get(CUR_MAP).getHEIGHT() * Tile.SIZE - screen.HEIGHT));
 	}
 
 	public boolean isRight() {
@@ -171,6 +164,14 @@ public class Player extends Entity implements Renderable, Updateble {
 
 	public void setDir(int dir) {
 		this.dir = dir;
+	}
+
+	public Camera getCamera() {
+		return camera;
+	}
+
+	public void setCamera(Camera camera) {
+		this.camera = camera;
 	}
 
 }

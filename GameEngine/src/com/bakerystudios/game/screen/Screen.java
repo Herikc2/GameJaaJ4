@@ -16,13 +16,21 @@ public class Screen extends Canvas {
 	 */
 	private static final long serialVersionUID = -8027725672170867390L;
 	
-	public static int SCALE = 5;
-	public static int WIDTH = 1280 / SCALE;
-	public static int HEIGHT = (WIDTH / 16) * 9;
-	public static int SCALE_WIDTH = WIDTH * SCALE;
-	public static int SCALE_HEIGHT = HEIGHT * SCALE;
+	public int SCALE = 5;
+	public int WIDTH = 1280 / SCALE;
+	public int HEIGHT = ((1280 / 5) / 16) * 9;
+	public static int SCALE_WIDTH = (1280 / 5) * 5;
+	public static int SCALE_HEIGHT = (((1280 / 5) / 16) * 9) * 5;
+	
+	/*
+	public int SCALE = 5;
+	public int WIDTH = 1280 / SCALE;
+	public static int HEIGHT = (WIDTH / 16) * 9; // (WIDTH / 16) * 9
+	public static int SCALE_WIDTH = WIDTH * SCALE; // WIDTH * SCALE
+	public static int SCALE_HEIGHT = HEIGHT * SCALE; // HEIGHT * SCALE
+	*/
 
-	public static JFrame frame;
+	private JFrame frame;
 	
 	public Screen(List<Input> inputs) {
 		for(Input input : inputs) {

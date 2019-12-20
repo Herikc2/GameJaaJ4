@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import com.bakerystudios.engine.Renderable;
 import com.bakerystudios.engine.Updateble;
+import com.bakerystudios.engine.camera.Camera;
 
 public class GraphicUserInterface implements Renderable, Updateble {
 
@@ -25,6 +26,12 @@ public class GraphicUserInterface implements Renderable, Updateble {
 	public void render(Graphics g) {
 		ui.render(g);
 		hud.render(g);
+	}
+
+	@Override
+	public void render(Graphics g, Camera camera) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

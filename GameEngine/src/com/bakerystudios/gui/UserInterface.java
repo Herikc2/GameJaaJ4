@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import com.bakerystudios.engine.Renderable;
 import com.bakerystudios.engine.Updateble;
+import com.bakerystudios.engine.camera.Camera;
 import com.bakerystudios.game.GameState;
 import com.bakerystudios.game.screen.Screen;
 import com.bakerystudios.gui.menu.MainMenu;
@@ -52,6 +53,12 @@ public class UserInterface implements Renderable, Updateble {
 
 	protected void drawCentralizedString(Graphics g, String str, int y) {
 		g.drawString(str, Screen.SCALE_WIDTH / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
+	}
+
+	@Override
+	public void render(Graphics g, Camera camera) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

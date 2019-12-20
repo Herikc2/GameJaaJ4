@@ -9,13 +9,12 @@ import javax.imageio.ImageIO;
 
 import com.bakerystudios.engine.Renderable;
 import com.bakerystudios.engine.Updateble;
-import com.bakerystudios.game.Game;
-import com.bakerystudios.game.GameState;
+import com.bakerystudios.engine.camera.Camera;
 import com.bakerystudios.game.screen.Screen;
 
 public class MainMenu implements Updateble, Renderable {
 	
-	public static boolean enter;
+	public static boolean enter; // Não sei como retirar o static
 	private BufferedImage[] background;
 	private int frames = 0, maxFrames = 55, index = 0, maxIndex = 1;
 	
@@ -80,6 +79,12 @@ public class MainMenu implements Updateble, Renderable {
 		/*g.setColor(Color.WHITE);
 		g.setFont(Game.boxFont);
 		drawCentralizedString(g, "CRIADO POR: X E Y", 690);*/
+	}
+
+	@Override
+	public void render(Graphics g, Camera camera) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

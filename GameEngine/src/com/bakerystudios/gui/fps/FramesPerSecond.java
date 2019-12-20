@@ -6,6 +6,7 @@ import java.awt.Graphics;
 
 import com.bakerystudios.engine.Renderable;
 import com.bakerystudios.engine.Updateble;
+import com.bakerystudios.engine.camera.Camera;
 import com.bakerystudios.game.screen.Screen;
 
 public class FramesPerSecond implements Renderable, Updateble {
@@ -33,6 +34,12 @@ public class FramesPerSecond implements Renderable, Updateble {
 		g.setColor(Color.YELLOW);
 		g.setFont(new Font("Arial", Font.PLAIN, (int) (Screen.SCALE_WIDTH * 0.012)));
 		g.drawString(FPS, Screen.SCALE_WIDTH - (int) (Screen.SCALE_WIDTH * 0.050), (int) (Screen.SCALE_WIDTH * 0.018));
+	}
+
+	@Override
+	public void render(Graphics g, Camera camera) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
