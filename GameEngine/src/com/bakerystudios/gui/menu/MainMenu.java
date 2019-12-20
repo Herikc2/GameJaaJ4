@@ -32,15 +32,15 @@ public class MainMenu implements Updateble, Renderable {
 	public void update() {
 	}
 	
-	protected void drawCentralizedString(Graphics g, String str, int y) {
-		g.drawString(str, Screen.SCALE_WIDTH / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
+	protected void drawCentralizedString(Graphics g, String str, int y, Screen screen) {
+		g.drawString(str, screen.SCALE_WIDTH / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
 	}
 	
-	protected void fillCentralizedRect(Graphics g, int y, int width, int height) {
-		g.fillRect(Screen.SCALE_WIDTH / 2 - width / 2, y, width, height);
+	protected void fillCentralizedRect(Graphics g, int y, int width, int height, Screen screen) {
+		g.fillRect(screen.SCALE_WIDTH / 2 - width / 2, y, width, height);
 	}
 	
-	private void drawButton(Graphics g) {
+	private void drawButton(Graphics g, Screen screen) {
 		int y = 500;
 		int fontHeight = g.getFontMetrics().getHeight();
 		int fontWidth = g.getFontMetrics().stringWidth("Aperte ENTER para jogar");
@@ -49,12 +49,12 @@ public class MainMenu implements Updateble, Renderable {
 		int height = fontHeight + 20;
 		
 		g.setColor(new Color(111, 83, 39));
-		fillCentralizedRect(g, y, width, height);
+		fillCentralizedRect(g, y, width, height, screen);
 		g.setColor(new Color(190, 163, 115));
-		fillCentralizedRect(g, y + 5, width - 10, height - 10);
+		fillCentralizedRect(g, y + 5, width - 10, height - 10, screen);
 
 		g.setColor(Color.BLACK);
-		drawCentralizedString(g, "Aperte ENTER para jogar", y + 45);
+		drawCentralizedString(g, "Aperte ENTER para jogar", y + 45, screen);
 	}
 	
 	public void animation() {
@@ -83,6 +83,12 @@ public class MainMenu implements Updateble, Renderable {
 
 	@Override
 	public void render(Graphics g, Camera camera) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void render(Graphics g, Screen screen) {
 		// TODO Auto-generated method stub
 		
 	}

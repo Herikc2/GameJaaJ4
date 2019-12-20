@@ -19,8 +19,8 @@ public class Screen extends Canvas {
 	public int SCALE = 5;
 	public int WIDTH = 1280 / SCALE;
 	public int HEIGHT = ((1280 / 5) / 16) * 9;
-	public static int SCALE_WIDTH = (1280 / 5) * 5;
-	public static int SCALE_HEIGHT = (((1280 / 5) / 16) * 9) * 5;
+	public int SCALE_WIDTH = (1280 / 5) * 5;
+	public int SCALE_HEIGHT = (((1280 / 5) / 16) * 9) * 5;
 	
 	/*
 	public int SCALE = 5;

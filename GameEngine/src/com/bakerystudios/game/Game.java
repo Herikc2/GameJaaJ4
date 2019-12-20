@@ -173,7 +173,7 @@ public class Game implements Runnable, Renderable, Updateble {
 
 		g.dispose();
 		g = bs.getDrawGraphics();
-		g.drawImage(frame, 0, 0, Screen.SCALE_WIDTH, Screen.SCALE_HEIGHT, null);
+		g.drawImage(frame, 0, 0, screen.SCALE_WIDTH, screen.SCALE_HEIGHT, null);
 		
 		nonPixelatedRender(g);
 		
@@ -253,6 +253,12 @@ public class Game implements Runnable, Renderable, Updateble {
 
 	@Override
 	public void render(Graphics g, Camera camera) {
+	}
+
+	@Override
+	public void render(Graphics g, Screen screen) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

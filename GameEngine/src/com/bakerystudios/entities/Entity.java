@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import com.bakerystudios.engine.Renderable;
 import com.bakerystudios.engine.Updateble;
 import com.bakerystudios.engine.camera.Camera;
+import com.bakerystudios.game.screen.Screen;
 
 public class Entity implements Renderable, Updateble {
 	
@@ -97,6 +98,12 @@ public class Entity implements Renderable, Updateble {
 
 	public void setDebug(boolean debug) {
 		this.debug = debug;
+	}
+
+	@Override
+	public void render(Graphics g, Screen screen) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
