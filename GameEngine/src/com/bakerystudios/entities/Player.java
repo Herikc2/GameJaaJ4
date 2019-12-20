@@ -24,7 +24,7 @@ public class Player extends Entity implements Renderable, Updateble {
 	private boolean moved = false;
 	private final int RIGHT_DIR = 0, LEFT_DIR = 1, UP_DIR = 2, DOWN_DIR = 3;
 	private int dir = LEFT_DIR;
-	protected static boolean right, left, up, down; // Não sei como tirar o static
+	protected static boolean right, left, up, down;
 
 	private double speed = 1.0;
 
@@ -32,6 +32,7 @@ public class Player extends Entity implements Renderable, Updateble {
 	private BufferedImage[] leftSprite;
 	private BufferedImage[] downSprite;
 	private BufferedImage[] upSprite;
+	
 	private Camera camera;
 
 	public Player(int x, int y, int width, int height, BufferedImage sprite, Spritesheet characters) {
@@ -105,7 +106,7 @@ public class Player extends Entity implements Renderable, Updateble {
 		}
 	}
 
-	public void update(List<World> world, int CUR_MAP, Screen screen) {
+	public void update(List<World> world, Screen screen, int CUR_MAP) {
 		moving();
 		animation();
 		updateCamera(world, CUR_MAP, screen);
@@ -131,10 +132,10 @@ public class Player extends Entity implements Renderable, Updateble {
 	}
 
 	public void updateCamera(List<World> world, int CUR_MAP, Screen screen) {
-		camera.setX(Camera.clamp(this.getX() - (screen.getWidth() / 2), 0,
-				world.get(CUR_MAP).WIDTH * Tile.SIZE - screen.getWidth()));
-		camera.setY(Camera.clamp(this.getY() - (screen.getHeight() / 2), 0,
-				world.get(CUR_MAP).HEIGHT * Tile.SIZE - screen.getHeight()));
+		camera.setX(camera.clamp(this.getX() - (screen.getWIDTH() / 2), 0,
+				world.get(CUR_MAP).getWIDTH() * Tile.SIZE - screen.getWIDTH()));
+		camera.setY(camera.clamp(this.getY() - (screen.getHEIGHT() / 2), 0,
+				world.get(CUR_MAP).getHEIGHT() * Tile.SIZE - screen.getHEIGHT()));
 	}
 
 	public boolean isRight() {

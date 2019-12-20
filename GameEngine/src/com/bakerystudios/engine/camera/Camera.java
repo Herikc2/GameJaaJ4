@@ -6,11 +6,11 @@ public class Camera {
 	private int y = 0;
 	
 	public Camera(int x, int y) {
-		this.setX(x);
-		this.setY(y);
+		this.x = x;
+		this.y = y;
 	}
 	
-	public static int clamp(int current, int min, int max) {
+	public int clamp(int current, int min, int max) {
 		if(current < min){
 			current = min;
 		}

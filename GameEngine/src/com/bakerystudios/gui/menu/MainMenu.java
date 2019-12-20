@@ -13,11 +13,11 @@ import com.bakerystudios.engine.camera.Camera;
 import com.bakerystudios.game.screen.Screen;
 
 public class MainMenu implements Updateble, Renderable {
-
-	public static boolean enter; // Não sei como tirar o static
+	
+	public static boolean enter; // NÃ£o sei como retirar o static
 	private BufferedImage[] background;
 	private int frames = 0, maxFrames = 55, index = 0, maxIndex = 1;
-
+	
 	public MainMenu() {
 		try {
 			background = new BufferedImage[2];
@@ -31,24 +31,23 @@ public class MainMenu implements Updateble, Renderable {
 	@Override
 	public void update() {
 	}
-
+	
 	protected void drawCentralizedString(Graphics g, String str, int y, Screen screen) {
 		g.drawString(str, screen.getSCALE_WIDTH() / 2 - g.getFontMetrics().stringWidth(str) / 2, y);
 	}
-
+	
 	protected void fillCentralizedRect(Graphics g, int y, int width, int height, Screen screen) {
 		g.fillRect(screen.getSCALE_WIDTH() / 2 - width / 2, y, width, height);
 	}
-
-	@SuppressWarnings("unused")
+	
 	private void drawButton(Graphics g, Screen screen) {
 		int y = 500;
 		int fontHeight = g.getFontMetrics().getHeight();
 		int fontWidth = g.getFontMetrics().stringWidth("Aperte ENTER para jogar");
-
+		
 		int width = fontWidth + 30;
 		int height = fontHeight + 20;
-
+		
 		g.setColor(new Color(111, 83, 39));
 		fillCentralizedRect(g, y, width, height, screen);
 		g.setColor(new Color(190, 163, 115));
@@ -57,7 +56,7 @@ public class MainMenu implements Updateble, Renderable {
 		g.setColor(Color.BLACK);
 		drawCentralizedString(g, "Aperte ENTER para jogar", y + 45, screen);
 	}
-
+	
 	public void animation() {
 		frames++;
 		if (frames == maxFrames) {
@@ -70,28 +69,28 @@ public class MainMenu implements Updateble, Renderable {
 
 	@Override
 	public void render(Graphics g) {
-		/*
-		 * g.setColor(Color.BLACK); g.setFont(Game.menuFont);
-		 * g.drawImage(background[index], 0, 0, null);
-		 */
-
-		// drawButton(g);
+		/*g.setColor(Color.BLACK);
+		g.setFont(Game.menuFont);
+		g.drawImage(background[index], 0, 0, null);*/
+		
+		//drawButton(g);
 		animation();
-
-		/*
-		 * g.setColor(Color.WHITE); g.setFont(Game.boxFont); drawCentralizedString(g,
-		 * "CRIADO POR: X E Y", 690);
-		 */
+		
+		/*g.setColor(Color.WHITE);
+		g.setFont(Game.boxFont);
+		drawCentralizedString(g, "CRIADO POR: X E Y", 690);*/
 	}
 
 	@Override
 	public void render(Graphics g, Camera camera) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void render(Graphics g, Screen screen) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

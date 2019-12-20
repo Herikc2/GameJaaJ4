@@ -32,13 +32,13 @@ public class Game implements Runnable, Renderable, Updateble {
 
 	private final int MAP = 0;
 	private int CUR_MAP = MAP;
-
+	
 	private boolean isRunning;
 
 	private Thread thread;
 	private Screen screen;
 	private List<Input> inputs = new ArrayList<>();
-
+	
 	private Font boxFont;
 	private Font menuFont;
 	private Font inventFont;
@@ -55,51 +55,51 @@ public class Game implements Runnable, Renderable, Updateble {
 
 	private Player player;
 
-	public static Spritesheet spritesheet;
+	public static Spritesheet spritesheet; // NÃ£o sei como retirar o static
 	private Spritesheet characters;
 	private List<World> world;
 	private List<Entity> entities;
 
-	public static boolean enter; // Não sei como tirar o static
-	public static boolean gameEvent = false; // Não sei como tirar o static
-
+	public static boolean enter; // NÃ£o sei retirar o static
+	public static boolean gameEvent = false; // NÃ£o sei retirar o static
+	
 	private boolean EXIT = false;
 
 	public Game() {
 		// Object instantiation
-
+		
 		// carregamento dos inputs
 		inputs = new ArrayList<>();
 		inputs.add(new MenuInput());
 		inputs.add(new PlayerInput());
 		inputs.add(new DebugInput());
 		screen = new Screen(inputs);
-
+		
 		// carregamento das fontes
 		loadFonts();
-
+		
 		// outros carregamentos
-		rand = new Random();
-		frame = new BufferedImage(screen.getWidth(), screen.getHeight(), BufferedImage.TYPE_INT_RGB);
-
+		setRand(new Random());
+		frame = new BufferedImage(screen.getWIDTH(), screen.getHEIGHT(), BufferedImage.TYPE_INT_RGB);
+		
 		gui = new GraphicUserInterface();
 		audio = new AudioManager();
-
+		
 		// carregamento das sprites
 		spritesheet = new Spritesheet("/sprites/spritesheet.png");
-		setCharacters(new Spritesheet("/sprites/characters.png"));
-
+		characters = new Spritesheet("/sprites/characters.png");
+		
 		player = new Player(0, 0, Tile.SIZE, Tile.SIZE, null, characters);
 		entities = new ArrayList<Entity>();
 
 		// carregamento dos mapas
 		world = new ArrayList<>();
 		//world.add(new World("/levels/map.png", "/levels/map_collision.png", player));
-
+		
 		// carregamento das entidades
 		entities.add(player);
 	}
-
+	
 	public void loadFonts() {
 		try {
 			setBoxFont(Font.createFont(Font.TRUETYPE_FONT, boxFontStream).deriveFont(Font.PLAIN, 20));
@@ -128,30 +128,30 @@ public class Game implements Runnable, Renderable, Updateble {
 	public void update() {
 		gui.update();
 		audio.update();
-
+		
 		if (GameState.state == GameState.PLAYING) {
 			for (Entity e : entities) {
-				if (e instanceof Player)
-					((Player) e).update(world, CUR_MAP, screen);
+				if(e instanceof Player)
+					((Player) e).update(world, screen, CUR_MAP);
 				else
 					e.update();
 			}
-		}
-
-		if (EXIT)
+		} 
+		
+		if(EXIT)
 			System.exit(0);
 	}
 
 	private void nonPixelatedRender(Graphics g) {
 		gui.render(g);
-
+		
 //		g.setColor(Color.RED);
 //		g.setFont(new Font("arial", Font.PLAIN, 15));
 //		g.drawString("x: " + player.getX() + " y: " + player.getY(), 1100, 23);
 	}
 
 	private void pixelatedRender(Graphics g) {
-		//world.get(CUR_MAP).render(g, player.getCamera());
+		//world.get(CUR_MAP).render(g);
 		for (Entity e : entities)
 			e.render(g);
 	}
@@ -167,19 +167,19 @@ public class Game implements Runnable, Renderable, Updateble {
 		g = frame.getGraphics();
 
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, screen.getWidth(), screen.getHeight());
+		g.fillRect(0, 0, screen.getWidth(), screen.getHEIGHT());
 
 		pixelatedRender(g);
 
 		g.dispose();
 		g = bs.getDrawGraphics();
 		g.drawImage(frame, 0, 0, screen.getSCALE_WIDTH(), screen.getSCALE_HEIGHT(), null);
-
+		
 		nonPixelatedRender(g);
-
+		
 		bs.show();
 	}
-	
+
 	@Override
 	public void run() {
 		double amountOfTicks = 60.0;
@@ -187,7 +187,7 @@ public class Game implements Runnable, Renderable, Updateble {
 		double delta = 0;
 		long lastTime = System.nanoTime();
 
-		screen.requestFocus();
+		screen.requestFocus(); 
 		while (isRunning) {
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
@@ -247,20 +247,18 @@ public class Game implements Runnable, Renderable, Updateble {
 		return rand;
 	}
 
-	public Spritesheet getCharacters() {
-		return characters;
-	}
-
-	public void setCharacters(Spritesheet characters) {
-		this.characters = characters;
+	public void setRand(Random rand) {
+		this.rand = rand;
 	}
 
 	@Override
 	public void render(Graphics g, Camera camera) {
 	}
-	
+
 	@Override
 	public void render(Graphics g, Screen screen) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
