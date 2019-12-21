@@ -55,13 +55,12 @@ public class Game implements Runnable, Renderable, Updateble {
 
 	private Player player;
 
-	public static Spritesheet spritesheet; // NÃ£o sei como retirar o static
+	public static Spritesheet spritesheet; // NÃo sei como retirar o static
 	private Spritesheet characters;
 	private List<World> world;
 	private List<Entity> entities;
 
-	public static boolean enter; // NÃ£o sei retirar o static
-	public static boolean gameEvent = false; // NÃ£o sei retirar o static
+	public static boolean enter; // NÃo sei retirar o static
 	
 	private boolean EXIT = false;
 
@@ -88,13 +87,14 @@ public class Game implements Runnable, Renderable, Updateble {
 		// carregamento das sprites
 		spritesheet = new Spritesheet("/sprites/spritesheet.png");
 		characters = new Spritesheet("/sprites/characters.png");
-		
+	
 		player = new Player(0, 0, Tile.SIZE, Tile.SIZE, null, characters);
 		entities = new ArrayList<Entity>();
 
 		// carregamento dos mapas
 		world = new ArrayList<>();
-		//world.add(new World("/levels/map.png", "/levels/map_collision.png", player));
+		world.add(new World("/levels/map.png", "/levels/map_collision.png", player));
+		
 		
 		// carregamento das entidades
 		entities.add(player);
