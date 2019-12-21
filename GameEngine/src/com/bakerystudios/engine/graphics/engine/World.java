@@ -42,8 +42,8 @@ public class World {
 						tiles[xx + (yy * getWIDTH())] = new WallTile(xx * Tile.SIZE, yy * Tile.SIZE, Tile.TILE_WALL);
 					}
 					if (pixelAtual == PLAYER) {
-						player.setX(xx * Tile.SIZE);
-						player.setY(yy * Tile.SIZE);
+						//player.setX(xx * Tile.SIZE);
+						//player.setY(yy * Tile.SIZE);
 					}
 				}
 			}

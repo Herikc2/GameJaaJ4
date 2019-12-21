@@ -16,7 +16,7 @@ public class Screen extends Canvas {
 	 */
 	private static final long serialVersionUID = -8027725672170867390L;
 	
-	private int SCALE = 5;
+	private int SCALE = 2;
 	private int WIDTH = 1280 / SCALE;
 	private int HEIGHT = (getWIDTH() / 16) * 9;
 	private int SCALE_WIDTH = getWIDTH() * SCALE;
